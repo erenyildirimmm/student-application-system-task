@@ -14,6 +14,8 @@ import {
   BsSortDown,
   BsSortDownAlt,
 } from "react-icons/bs";
+import { FaAngleLeft } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const initialFilter = {
@@ -143,7 +145,11 @@ const Home = () => {
   return (
     <>
       <section className="container mx-auto py-14">
-        <div className="flex mb-10 justify-between items-center">
+        <Link className="bg-orange-900 py-2 px-4 rounded-xl inline-flex items-center justify-center gap-2">
+          <FaAngleLeft size={15} />
+          <span>Logout</span>
+        </Link>
+        <div className="flex mb-10 justify-between items-center mt-10">
           <h1 className="md:text-3xl text-2xl">Applications</h1>
           <div className="xl:flex hidden gap-4">
             <Button
@@ -176,7 +182,11 @@ const Home = () => {
             </Button>
           </div>
           <Button
-            onClick={!filters.filter ? () => setIsModalActive((isActive) => !isActive) : clearFilter}
+            onClick={
+              !filters.filter
+                ? () => setIsModalActive((isActive) => !isActive)
+                : clearFilter
+            }
             className="flex gap-3"
           >
             {!filters.filter ? "Filter" : "Clear Filter"}
@@ -212,7 +222,6 @@ const Home = () => {
         </div>
       </section>
 
-      
       <Modal
         isActive={isModalActive}
         onClose={() => setIsModalActive((isActive) => false)}
